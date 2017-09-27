@@ -44,4 +44,10 @@ export interface IMyOptions {
     ariaLabelNextMonth?: string;
     ariaLabelPrevYear?: string;
     ariaLabelNextYear?: string;
+    showSaveBtnOnPopup?: boolean;
+    showClearBtnOnPopup?: boolean;
+    saveBtnClassString?: string;
+    clearBtnClassString?: string;
+    saveBtnCaption?: string;
+    clearBtnCaption?: string;
 }

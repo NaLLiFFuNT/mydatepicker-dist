@@ -1,10 +1,10 @@
-import { EventEmitter, OnChanges, SimpleChanges, ElementRef, ChangeDetectorRef, Renderer, OnDestroy } from "@angular/core";
+import { EventEmitter, OnChanges, SimpleChanges, ElementRef, ChangeDetectorRef, Renderer } from "@angular/core";
 import { ControlValueAccessor } from "@angular/forms";
 import { IMyDate, IMyMonth, IMyWeek, IMyOptions, IMyDateModel, IMyInputAutoFill, IMyInputFieldChanged, IMyCalendarViewChanged, IMyInputFocusBlur } from "./interfaces/index";
 import { LocaleService } from "./services/my-date-picker.locale.service";
 import { UtilService } from "./services/my-date-picker.util.service";
 export declare const MYDP_VALUE_ACCESSOR: any;
-export declare class MyDatePicker implements OnChanges, ControlValueAccessor, OnDestroy {
+export declare class MyDatePicker implements OnChanges, ControlValueAccessor {
     elem: ElementRef;
     private renderer;
     private cdr;
@@ -21,9 +21,10 @@ export declare class MyDatePicker implements OnChanges, ControlValueAccessor, On
     calendarViewChanged: EventEmitter<IMyCalendarViewChanged>;
     calendarToggle: EventEmitter<number>;
     inputFocusBlur: EventEmitter<IMyInputFocusBlur>;
+    templateBtnSaveClick: EventEmitter<IMyDateModel>;
+    templateBtnClearClick: EventEmitter<IMyDateModel>;
     onChangeCb: (_: any) => void;
     onTouchedCb: () => void;
-    clickUnsubscribe: Function;
     showSelector: boolean;
     visibleMonth: IMyMonth;
     selectedMonth: IMyMonth;
@@ -68,7 +69,6 @@ export declare class MyDatePicker implements OnChanges, ControlValueAccessor, On
     writeValue(value: Object): void;
     registerOnChange(fn: any): void;
     registerOnTouched(fn: any): void;
-    ngOnDestroy(): void;
     ngOnChanges(changes: SimpleChanges): void;
     removeBtnClicked(): void;
     openBtnClicked(): void;
@@ -101,4 +101,6 @@ export declare class MyDatePicker implements OnChanges, ControlValueAccessor, On
     parseSelectedDate(selDate: any): IMyDate;
     parseSelectedMonth(ms: string): IMyMonth;
     setHeaderBtnDisabledState(m: number, y: number): void;
+    onTemplateBtnClearClick(): void;
+    onTemplateBtnSaveClick(): void;
 }
